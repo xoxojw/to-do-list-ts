@@ -1,4 +1,4 @@
-import { Todo, TodosProps } from "components/config/global";
+import { Todo, TodosProps } from "components/common/global";
 import { styled } from "styled-components";
 
 const ListTodos = ({ todos, setTodos }: TodosProps) => {

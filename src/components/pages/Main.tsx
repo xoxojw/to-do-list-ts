@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Todo } from "components/config/global";
+import { Todo } from "components/common/global";
 import ListTodos from "components/todo/ListTodos";
 import AddTodo from "components/todo/AddTodo";
 
