@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Todo, TodosProps } from "components/config/global";
+import { Todo, TodosProps } from "components/common/global";
 import shortid from "shortid";
 import { styled } from "styled-components";
 
