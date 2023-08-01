@@ -28,7 +28,7 @@ const AddTodo = () => {
       <StAddFormWrapper>
         <StAddForm onSubmit={onSubmit}>
           <StAddHeader>
-            <h2>Add</h2>
+            <h2>Typing Todo</h2>
             <StAddBtn>+</StAddBtn>
           </StAddHeader>
           <StInputTitle
@@ -54,10 +54,10 @@ const AddTodo = () => {
 export default AddTodo;
 
 const StAddFormWrapper = styled.div`
-  width: 80%;
+  width: 75%;
   height: 10vh;
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
