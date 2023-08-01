@@ -17,4 +17,5 @@ export default Side;
 const StDate = styled.p`
   font-size: 36px;
   font-weight: 500;
+  color: ${props => props.theme.accentColor2};
 `

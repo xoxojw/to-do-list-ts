@@ -1,6 +1,7 @@
 import { RootState } from "common/global";
 import { deleteTodo, toggleTodo } from "components/redux/modules/todoSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
 const ListTodos = () => {
@@ -36,7 +37,7 @@ const ListTodos = () => {
                 checked={todo.isDone}
                 onChange={(e) => handleToggle(e, todo.id)}
               />
-                {todo.title}
+                <Link to={`/detail/${todo.id}`}>{todo.title}</Link>
               </StTodoTitle>
               <StTodoStatus>
                 <StTodoIsDone>{todo.isDone ? "✅완료" : "🏃진행 중"}</StTodoIsDone>
@@ -61,7 +62,7 @@ export default ListTodos;
 const StTodoItem = styled.div`
   width: 80%;
   height: 5vh;
-  border: 1px solid black;
+  border: 2px solid ${props => props.theme.accentColor2};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -78,6 +79,7 @@ const StItemHeader = styled.div`
 const StTodoTitle = styled.h3<{ isDone: boolean }>`
   font-weight: 700;
   text-decoration: ${(props) => (props.isDone ? "line-through" : "none")};
+  color: ${props => props.theme.accentColor}
 `;
 
 const StTodoStatus = styled.div`
