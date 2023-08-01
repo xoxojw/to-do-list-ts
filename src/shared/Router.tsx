@@ -4,6 +4,8 @@ import RootLayout from "components/layout/RootLayout";
 import Intro from "components/pages/Intro";
 import MainLayout from "components/layout/MainLayout";
 import Main from "components/pages/Main";
+import Detail from "components/pages/Detail";
+import NotFound from "components/pages/NotFound";
 
 const Router = createBrowserRouter([
   {
@@ -21,10 +23,20 @@ const Router = createBrowserRouter([
           {
             path: "",
             element: <Main />,
+          },
+        ]
+      },
+      {
+        path: "/detail/:id",
+        element: <MainLayout />,
+        children: [
+          {
+            path: "",
+            element: <Detail />
           }
         ]
       },
-    ]
+    ],
   }
 ])
 
