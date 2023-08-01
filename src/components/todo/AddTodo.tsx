@@ -28,8 +28,8 @@ const AddTodo = () => {
       <StAddFormWrapper>
         <StAddForm onSubmit={onSubmit}>
           <StAddHeader>
-            <h2>Typing Todo</h2>
-            <StAddBtn>+</StAddBtn>
+            <StAddInputTitle>Typing Todo</StAddInputTitle>
+            <StAddBtn type="submit">+</StAddBtn>
           </StAddHeader>
           <StInputTitle
             name="title"
@@ -54,7 +54,7 @@ const AddTodo = () => {
 export default AddTodo;
 
 const StAddFormWrapper = styled.div`
-  width: 75%;
+  width: 70%;
   height: 10vh;
   position: absolute;
   bottom: 20px;
@@ -74,12 +74,20 @@ const StAddHeader = styled.div`
   justify-content: space-between;
 `
 
+const StAddInputTitle = styled.h2`
+  font-size: 24px;
+  margin-bottom: 10px;
+`
+
 const StAddBtn = styled.button`
+  width: 30px;
+  height: 30px;
   outline: none;
   border: none;
-  background-color: none;
-  font-size: 18px;
+  background-color: transparent;
+  font-size: 24px;
   font-weight: 700;
+  cursor: pointer;
 `
 
 const StInputTitle = styled.input`
@@ -90,7 +98,8 @@ const StInputTitle = styled.input`
 `;
 
 const StInputContent = styled.input`
-  height: 25px;outline: none;
+  height: 30px;
+  outline: none;
   border: none;
   border-bottom: 1px solid gray;
 `

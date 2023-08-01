@@ -1,4 +1,4 @@
-import { RootState } from "components/common/global";
+import { RootState } from "common/global";
 import shortid from "shortid";
 import { createSlice } from "@reduxjs/toolkit";
 

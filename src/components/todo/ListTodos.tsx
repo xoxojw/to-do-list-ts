@@ -1,4 +1,4 @@
-import { RootState } from "components/common/global";
+import { RootState } from "common/global";
 import { deleteTodo, toggleTodo } from "components/redux/modules/todoSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { styled } from "styled-components";
@@ -18,6 +18,10 @@ const ListTodos = () => {
   const handleDelete = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
     e.preventDefault();
     dispatch(deleteTodo(id));
+  }
+
+  const handleEdit = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
+    // 수정 로직
   }
 
   return (
@@ -41,7 +45,7 @@ const ListTodos = () => {
             <StItemBody>
               <StTodoContent isDone={todo.isDone}>{todo.content}</StTodoContent>
               <StBtnContainer>
-                <StBtn>수정</StBtn>
+                <StBtn onClick={(e) => handleEdit(e, todo.id)}>수정</StBtn>
                 <StBtn onClick={(e) => handleDelete(e, todo.id)}>삭제</StBtn>
               </StBtnContainer>
             </StItemBody>
@@ -104,4 +108,5 @@ const StBtn = styled.button`
   background-color: #edf4fa;
   border: 1px solid gray;
   border-radius: 5px;
+  cursor: pointer;
 `;
