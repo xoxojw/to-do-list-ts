@@ -77,6 +77,7 @@ const StAddHeader = styled.div`
 const StAddInputTitle = styled.h2`
   font-size: 24px;
   margin-bottom: 10px;
+  color: ${props => props.theme.accentColor2};
 `
 
 const StAddBtn = styled.button`
@@ -88,18 +89,23 @@ const StAddBtn = styled.button`
   font-size: 24px;
   font-weight: 700;
   cursor: pointer;
-`
+  color: ${props => props.theme.accentColor}
+`;
 
 const StInputTitle = styled.input`
-  height: 25px;
+  height: 30px;
   outline: none;
   border: none;
-  border-bottom: 1px solid gray;
+  background-color: transparent;
+  border-bottom: 1px solid ${props => props.theme.accentColor2};
+  color: ${props => props.theme.textColor};
 `;
 
 const StInputContent = styled.input`
   height: 30px;
   outline: none;
   border: none;
-  border-bottom: 1px solid gray;
-`
+  background-color: transparent;
+  border-bottom: 1px solid ${props => props.theme.accentColor2};
+  color: ${props => props.theme.textColor};
+`;
