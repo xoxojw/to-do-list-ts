@@ -37,6 +37,7 @@ const Router = createBrowserRouter([
         ]
       },
     ],
+    errorElement: <NotFound />,
   }
 ])
 
