@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import shortid from "shortid";
 import { styled } from "styled-components";
 import { addTodo } from "components/redux/modules/todoSlice";
 
