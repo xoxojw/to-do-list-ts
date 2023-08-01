@@ -10,9 +10,8 @@ const ListTodos = () => {
   const sortedTodos = todos.slice().sort((a, b) => (a.isDone ? 1 : -1));
 
   // 완료여부(isDone) 토글
-  const handleToggle = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
-    e.preventDefault();
-    dispatch(toggleTodo(id));
+  const handleToggle = (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
+    dispatch(toggleTodo({id, isDone: e.target.checked}));
   };
 
   // 삭제
@@ -27,15 +26,22 @@ const ListTodos = () => {
         return (
           <StTodoItem key={todo.id}>
             <StItemHeader>
-              <StTodoTitle isDone={todo.isDone}>{todo.title}</StTodoTitle>
-              <StTodoIsDone>{todo.isDone ? "✅완료" : "🏃진행 중"}</StTodoIsDone>
+              <StTodoTitle isDone={todo.isDone}>
+              <input
+                type="checkbox"
+                checked={todo.isDone}
+                onChange={(e) => handleToggle(e, todo.id)}
+              />
+                {todo.title}
+              </StTodoTitle>
+              <StTodoStatus>
+                <StTodoIsDone>{todo.isDone ? "✅완료" : "🏃진행 중"}</StTodoIsDone>
+              </StTodoStatus>
             </StItemHeader>
             <StItemBody>
               <StTodoContent isDone={todo.isDone}>{todo.content}</StTodoContent>
               <StBtnContainer>
-                <StBtn onClick={(e) => handleToggle(e, todo.id)}>
-                  {todo.isDone ? "진행 중" : "완료"}
-                </StBtn>
+                <StBtn>수정</StBtn>
                 <StBtn onClick={(e) => handleDelete(e, todo.id)}>삭제</StBtn>
               </StBtnContainer>
             </StItemBody>
@@ -56,7 +62,7 @@ const StTodoItem = styled.div`
   flex-direction: column;
   justify-content: center;
   margin: 5px;
-  padding: 10px;
+  padding: 20px;
   line-height: 2;
 `;
 
@@ -69,6 +75,10 @@ const StTodoTitle = styled.h3<{ isDone: boolean }>`
   font-weight: 700;
   text-decoration: ${(props) => (props.isDone ? "line-through" : "none")};
 `;
+
+const StTodoStatus = styled.div`
+  display: flex;
+`
 
 const StTodoIsDone = styled.p`
   font-size: 14px;
@@ -90,7 +100,7 @@ const StBtnContainer = styled.div`
 
 const StBtn = styled.button`
   width: 55px;
-  height: 30px;
+  height: 25px;
   background-color: #edf4fa;
   border: 1px solid gray;
   border-radius: 5px;
