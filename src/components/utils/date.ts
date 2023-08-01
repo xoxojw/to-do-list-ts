@@ -19,5 +19,5 @@ export const convertTimestamp = (Today: any) => {
   const dayOfWeek = days[date.getDay()];
   const monthName = months[date.getMonth()];
 
-  return `${dd} ${dayOfWeek} ${monthName}, ${yyyy}`;
+  return `${dayOfWeek} ${dd} ${monthName}, ${yyyy}`;
 };
