@@ -43,11 +43,11 @@ const todoSlice = createSlice({
       state.todos = state.todos.filter(todo => todo.id !== action.payload);
     },
     toggleTodo: (state, action) => {
-      const todo = state.todos.find(todo => todo.id === action.payload);
-      if (todo) {
-        todo.isDone = !todo.isDone;
+      const index = state.todos.findIndex(todo => todo.id === action.payload.id);
+      if (index !== -1) {
+        state.todos[index] = { ...state.todos[index], isDone: !state.todos[index].isDone };
       }
-    },
+    },    
   }
 })
 
