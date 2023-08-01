@@ -13,6 +13,14 @@ const GlobalStyle = createGlobalStyle`
 
     font-family: Helvetica, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif
   }
+  body {
+    background-color: ${props => props.theme.bgColor};
+    color: ${props => props.theme.textColor};
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
 export default GlobalStyle;
