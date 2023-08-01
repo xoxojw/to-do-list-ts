@@ -1,34 +1,24 @@
-import { Todo, TodosProps } from "components/common/global";
+import { RootState } from "components/common/global";
+import { deleteTodo, toggleTodo } from "components/redux/modules/todoSlice";
+import { useSelector, useDispatch } from "react-redux";
 import { styled } from "styled-components";
 
-const ListTodos = ({ todos, setTodos }: TodosProps) => {
+const ListTodos = () => {
+  const todos = useSelector((state: RootState) => state.todos);
+  const dispatch = useDispatch();
   // 진행중인 Todos 먼저, 완료된 Todo는 뒤에 보이도록 Todos 정렬
   const sortedTodos = todos.slice().sort((a, b) => (a.isDone ? 1 : -1));
 
   // 완료여부(isDone) 토글
-  const handleToggle = (e: React.MouseEvent<HTMLButtonElement>, todoId: string) => {
+  const handleToggle = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
     e.preventDefault();
-    const newTodos = todos.map((todo) => {
-      if (todo.id === todoId) {
-        return {
-          ...todo,
-          isDone: !todo.isDone,
-        };
-      } else {
-        return { ...todo };
-      }
-    });
-    setTodos(newTodos);
+    dispatch(toggleTodo(id));
   };
 
   // 삭제
-  const handleDelete = (e: React.MouseEvent<HTMLButtonElement>, todoId: string) => {
+  const handleDelete = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
     e.preventDefault();
-    const newTodos = todos.filter((todo) => {
-      return todo.id !== todoId;
-    });
-
-    setTodos(newTodos);
+    dispatch(deleteTodo(id));
   }
 
   return (
