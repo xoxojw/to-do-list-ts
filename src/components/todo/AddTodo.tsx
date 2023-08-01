@@ -1,21 +1,27 @@
-import React, { useState } from "react";
-import { Todo, TodosProps } from "components/common/global";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import shortid from "shortid";
 import { styled } from "styled-components";
+import { addTodo } from "components/redux/modules/todoSlice";
 
-const AddTodo = ({ todos, setTodos }: TodosProps) => {
-  const initialState = { id: shortid(), title: "", content: "", isDone: false };
-  const [todo, setTodo] = useState(initialState);
+const AddTodo = () => {
+  const dispatch = useDispatch();
+  const [input, setInput] = useState({
+    title: "",
+    content: "",
+  });
 
-  const onChange = (e: React.FormEvent<HTMLInputElement>) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
-    setTodo({ ...todo, [name]: value });
+    setInput(prev => ({ ...prev, [name]: value }));
   }
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setTodos([...todos, { ...todo, id: shortid() }]);
-    setTodo(initialState);
+    dispatch(addTodo({
+      title: input.title,
+      content: input.content,
+    }))
   }
 
   return (
@@ -28,14 +34,14 @@ const AddTodo = ({ todos, setTodos }: TodosProps) => {
           </StAddHeader>
           <StInputTitle
             name="title"
-            value={todo.title}
+            value={input.title}
             onChange={onChange}
             placeholder="제목을 입력하세요."
             required
           />
           <StInputContent
             name="content"
-            value={todo.content}
+            value={input.content}
             onChange={onChange}
             placeholder="내용을 입력하세요."
             required

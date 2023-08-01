@@ -1,13 +1,10 @@
-import { Dispatch, SetStateAction } from "react";
+export type RootState = {
+  todos: Todo[];
+};
 
-export interface Todo {
+export type Todo = {
   id: string;
   title: string;
   content: string;
   isDone: boolean;
-}
-
-export interface TodosProps {
-  todos: Todo[];
-  setTodos: Dispatch<SetStateAction<Todo[]>>;
 }
